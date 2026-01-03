@@ -220,29 +220,45 @@ function update(time=0){
 }
 
 // -------------------- CONTROLS --------------------
-document.addEventListener('keydown', event=>{
-  switch(event.key.toLowerCase()){
-    case 'a': playerMove(-1); break;
-    case 'd': playerMove(1); break;
-    case 's': playerDrop(); break;
-    case 'w': playerRotate(1); break;
-    case ' ': 
-    case ' ':
-    while(!collide(grid, player)){
-    player.pos.y++;
-    }
-    player.pos.y--;     // ⬅️ step back ONE block
-    merge(grid, player);
-    gridSweep();
-    updateScore();
-    playerReset();
-    dropCounter = 0;
-    break;
+document.addEventListener('keydown', event => {
+  switch(event.key.toLowerCase()) {
 
+    case 'a': // Move left
+      playerMove(-1);
+      break;
 
-    case 'c': playerHold(); break;
+    case 'd': // Move right
+      playerMove(1);
+      break;
+
+    case 's': // Soft drop
+      playerDrop();
+      break;
+
+    case 'w': // Rotate
+      playerRotate(1);
+      break;
+
+    case ' ': // Hard drop
+      // Move down until collision
+      while(!collide(grid, player)) {
+        player.pos.y++;
+      }
+      player.pos.y--; // Step back ONE block so it doesn’t overlap
+      merge(grid, player); // Merge into the grid
+      gridSweep();          // Clear full rows
+      updateScore();        // Update UI
+      playerReset();        // Spawn next piece
+      dropCounter = 0;      // Reset drop timer
+      break;
+
+    case 'c': // Hold
+      playerHold();
+      break;
+
   }
 });
+
 
 // -------------------- MADE BY TONY BUTTON --------------------
 document.getElementById('tonyBtn').addEventListener('click', ()=>{
@@ -253,3 +269,4 @@ document.getElementById('tonyBtn').addEventListener('click', ()=>{
 playerReset();
 updateScore();
 update();
+
