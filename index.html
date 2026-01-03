@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Tetris</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+
+    <div class="game-info">
+      <h1>Neon Tetris</h1>
+      <p>Score: <span id="score">0</span></p>
+      <p>Level: <span id="level">1</span></p>
+
+      <div class="next-block">
+        <h3>Next</h3>
+        <canvas id="nextCanvas" width="100" height="100"></canvas>
+      </div>
+
+      <div class="hold-block">
+        <h3>Hold</h3>
+        <canvas id="holdCanvas" width="100" height="100"></canvas>
+      </div>
+
+      <div class="controls">
+        <h3>Controls</h3>
+        <p>W → Rotate</p>
+        <p>A → Left</p>
+        <p>S → Down</p>
+        <p>D → Right</p>
+        <p>Space → Hard Drop</p>
+        <p>C → Hold</p>
+      </div>
+
+      <!-- ✅ Added "Made by Tony" button -->
+      <button id="tonyBtn">Made by Tony</button>
+
+    </div>
+
+    <canvas id="gameCanvas" width="300" height="600"></canvas>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
